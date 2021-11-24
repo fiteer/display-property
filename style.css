@@ -1,0 +1,443 @@
+:root{
+    --main-color: #671d0c;
+    --secondry-color:#d97b29;
+    --third-color:#BF6B04;
+    --five-color: #191925;
+}
+
+body{
+    font-family: 'Shalimar', cursive, Arial, Tahoma;
+    overflow-x: hidden;
+}
+
+.color{
+    color: var(--secondry-color);
+}
+
+/* start nav bullets */
+.nav-bullets{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    z-index: 1000;
+}
+.nav-bullets .bullet{
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--main-color);
+    border-radius: 50%;
+    margin: 20px auto;
+    cursor: pointer;
+    position: relative;
+    
+}
+.nav-bullets .bullet:hover {
+   border-color: var(--secondry-color);
+}
+.nav-bullets .bullet:hover .tooltip{
+    display: block;
+    
+}
+.nav-bullets .bullet .tooltip{
+    
+    width: 98px;
+    color: white;
+    background-color: transparent;
+    padding: 5px 10px;
+    background-color: var(--secondry-color);
+    border-radius:4px;
+    position: absolute;
+    right: 32px;
+    top: -10px;
+    text-align: center;
+    cursor: default;
+    pointer-events: none;
+    display: none;
+}
+.nav-bullets .bullet .tooltip:before{
+    content: '';
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent transparent transparent var(--secondry-color);
+    
+    width: 0;
+    height: 0;
+    right: -20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+/* end nav bullets */
+
+
+/* End Section Display */
+
+#display{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 70px 350px 550px 200px;
+    
+    grid-template-areas: 
+    "h h h h h h h h h h h h"
+    "o o o o o o o o o o o o"
+    "m m m m m m c c c c c c"
+    "l l l l l l t t t t t t";
+}
+/* Start Header */
+
+.header{
+    grid-area: h;
+    background-color: var(--five-color);
+}
+
+.header .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+
+.brand a{
+    color: #fff;
+
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    margin-left: 10px;
+}
+.header a{
+    text-decoration: none;
+}
+.header .nav-list{
+    margin-right: 25px;
+}
+.header .nav-list ul{
+    list-style: none;
+    position: absolute;
+    background-color: var(--secondry-color);
+    width: 16vw;
+    height: 40vh;
+    right: 100%;
+    top: 8%;
+    z-index: 10;
+    overflow-x: hidden;
+    transition: 1s ease-in-out right;
+    border-radius: 14px;
+}
+
+.header .nav-list ul.active{
+    right: 9px;
+}
+
+.header .nav-list ul a{
+    font-size:0.5rem;
+    font-weight: bold;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    margin-right: 12px;
+    display: block;
+    transition: .3s ease color;
+    margin-bottom: 28px;
+}
+
+.header .nav-list ul a:hover{
+    color: var(--secondry-color);
+}
+
+.header .hamburger{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    border: 3px solid var(--main-color);
+    position: relative;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: scale(.8);
+    margin: 8px 20px;
+}
+
+.header .hamburger .bar{
+    height: 2.7px;
+    width: 30px;
+    position: relative;
+    background-color: var(--secondry-color);
+    z-index: -1;
+}
+
+.header .hamburger .bar::after,
+.header .hamburger .bar::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondry-color);
+    transition: .3s ease;
+    transition-property: top bottom;
+}
+
+.header .hamburger .bar::after{
+    top: 8px;
+}
+
+.header .hamburger .bar::before{
+    bottom: 8px;
+}
+
+.header .hamburger.active .bar::before{
+    bottom: 0;
+}
+
+.header .hamburger.active .bar::after{
+    top: 0;
+}
+
+@media (min-width:992px){
+    .header .hamburger{
+        display: none;
+    }
+    .header .nav-list ul{
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+        
+    }
+    .header .nav-list ul li{
+        display: inline-block;
+    }
+    .header .nav-list ul a{
+        font-size: 1.1rem;
+        margin-bottom: 0;
+    }
+    .header .nav-list ul a::after{
+        display: none;
+    }
+}
+
+/* End Header */
+/* Start Hero */
+.hero{
+
+    background-image: url(./image/5.jpg);
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+    grid-area: o;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .7;
+    z-index: -1;
+}
+
+.hero h1{
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    position: relative;
+    color: transparent;
+    text-transform: uppercase;
+    animation: text_reveal .5s ease forwards;
+}
+.hero h1:nth-child(1){
+    animation-delay: .6s;
+}
+.hero h1:nth-child(2){
+    animation-delay: 2s;
+}
+.hero h1:nth-child(3){
+    animation-delay: 3s;
+    
+}
+.hero h1 .col{
+    animation: text_reveal_name 1s 3.5s ease forwards;
+    color: transparent;
+}
+.hero h1 .span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--main-color);
+    animation: text_reveal_box 1s ease;
+}
+
+.hero h1:nth-child(1) .span{
+    animation-delay: .5s;
+}
+.hero h1:nth-child(2) .span{
+    animation-delay: 1.5s;
+}
+.hero h1:nth-child(3) .span{
+    animation-delay: 2.5s;
+}
+
+.hero a{
+    font-size: 2.5rem;
+    letter-spacing: .2rem;
+}
+.hero .inline{
+   
+    color:var(--secondry-color);
+    font-weight: bolder;
+    font-size: 1em;
+  
+}
+
+
+@keyframes text_reveal_box{
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes text_reveal{
+    100%{
+        color: white;
+    }
+}
+@keyframes text_reveal_name{
+    100%{
+        color: var(--secondry-color);
+        font-weight: bold;
+    }
+}
+/* End Hero */
+
+.block{
+    grid-area: m;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.block .imgs{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.block img{
+    
+}
+.block p{
+    font-size: 1.3em;
+    width: 70%;
+}
+.tables{
+    grid-area: c;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.tables table{
+    border: 2px solid;
+    margin-bottom: 32px;
+}
+
+.tables .black{
+    background-color: var(--five-color);
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font: bolder 20px;
+    
+}
+.tables :where(td, .td){
+    border: 2px solid;
+    padding: 8px;
+}
+.tables .table{
+    display: table;
+    padding: 0;
+    border: 2px solid;
+}
+.tables .table .row{
+    display: table-row;
+}
+.tables .table .row .td{
+    display: table-cell;
+}
+.list-items{
+    grid-area: l;
+}
+
+.list-items p{
+    display: list-item;
+    margin-left: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.list-items,
+.contents{
+    padding: 30px;
+    margin: 10px;
+    color: var(--secondry-color);
+    background-color: var(--five-color);
+}
+
+.contents{
+    grid-area: t;
+}
+
+.contents p{
+    display: contents;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width:767px){
+    #display{
+        grid-template-rows: 70px 350px 550px 600px 200px 200px;
+        grid-template-areas: 
+        "h h h h h h h h h h h h"
+        "o o o o o o o o o o o o"
+        "m m m m m m m m m m m m"
+        "c c c c c c c c c c c c"
+        "l l l l l l l l l l l l"
+        "t t t t t t t t t t t t";
+    }
+    .block{
+        justify-content: flex-start;
+    }
+    .tables{
+        justify-content: flex-start;
+    }
+}
+
+/* End Section Display */
